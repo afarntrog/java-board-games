@@ -97,7 +97,6 @@ public class Computer extends PlayerLogic {
             }
         }    
         // If we looped through whole board and never returned true then there are no valid moves
-        System.out.println("Computer cannot move. You go instead!");
         return true;
      }
 }

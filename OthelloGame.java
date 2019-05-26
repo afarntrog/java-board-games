@@ -19,6 +19,8 @@ public class OthelloGame {
                 play_computer(computer_player, game_board);
             } while ( !total_game_over(computer_player, human_player, game_board) );
 
+            // Get winner for game.
+            tally_winner(computer_player, human_player, game_board);
             // Output game over message.
             game_over_message( computer_player, human_player, game_board );
 
@@ -117,6 +119,9 @@ public class OthelloGame {
             game_board.set_board(human_player.my_board());
             game_board.board_printer(); //Test
         }
+        else {
+            System.out.println("You cannot go this turn. Turn skipped!\n");
+        }
     }
 
     // Execute computers turn
@@ -125,6 +130,9 @@ public class OthelloGame {
             computer_player.play_computer_move( game_board.get_board() );
             game_board.set_board(computer_player.my_board());
             game_board.board_printer();
+        }
+        else {
+            System.out.println("Computer cannot move. You go instead!\n");
         }
     }
 

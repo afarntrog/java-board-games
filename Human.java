@@ -25,7 +25,6 @@ public class Human extends PlayerLogic {
             }
         }    
         // If we looped through whole board and never returned true the there are no valid moves
-        System.out.println("You cannot move. Turn skipped!");
         return true;
      }
 }
