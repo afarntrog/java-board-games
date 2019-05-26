@@ -465,7 +465,6 @@ public class PlayerLogic {
      * @return flip value.
      */
     public String flip() {
-        System.out.println(PLAYER_PIECE);
         return PLAYER_PIECE;
     }
 

@@ -6,7 +6,6 @@ public class Human extends PlayerLogic {
     // This will call the super constructor.
     public Human(String piece_color) {
         super(piece_color);
-        System.out.println(PLAYER_PIECE);
     }
 
 
