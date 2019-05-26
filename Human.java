@@ -1,6 +1,6 @@
 public class Human extends PlayerLogic {
 
-    String BLANK_PIECE = " ";
+    // String BLANK_PIECE = " ";
 
 
     // This will call the super constructor.
@@ -10,6 +10,12 @@ public class Human extends PlayerLogic {
     }
 
 
+    /**
+     * This will test if game is over for this player. If it is then it'll return true and print out message
+     * telling player turn is over.
+     * @param param_othello_board
+     * @return
+     */
     public boolean game_is_over(String[][] param_othello_board) {
         othello_board = param_othello_board;
         for (int row = 0; row < othello_board.length; row++) {

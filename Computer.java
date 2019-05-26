@@ -1,45 +1,33 @@
 public class Computer extends PlayerLogic {
 
-    String BLANK_PIECE = " ";
-    
+    // String BLANK_PIECE = " ";
+
     // This will call the super constructor.
     public Computer(String piece_color) {
         super(piece_color);
-        System.out.println(PLAYER_PIECE);
     }
-    // // Make a deep copy of the board.
-    // public String[][] my_board() {
-    //     String[][] copy_board = new String[8][8];
-    //     for (int row = 0; row < othello_board.length; row++) {
-    //         for (int col = 0; col < othello_board.length; col++) {
-    //             copy_board[row][col] = othello_board[row][col];
-    //         }
-    //     }
-    //     return copy_board;
-    // }
 
-    // SET BEST MOVE //
+
+    // BEST MOVE //
     /**
      * This method finds the best possible move and then sets the global move_row and move_col
-     * to be the best move. So then it can call a method that'll execute the best move 
-     * 
+     * to be the best move at the current iteration. 
+     * So then it can call a method that'll execute the best move.
+     * 1) Test every possible move. Loop through the whole board. Check if move is valid.
+     * 2) If move is valid then count how many pieces it flips. 
+     * 3) The move with the most piece flips is the move we want. So return that value.
      */
     private int[] get_best_move() {
         int[] row_col = new int[2];
         int best_move_row = 0;
         int best_move_col = 0;
 
-        String[][] store_othello_board =  copy_me_now( othello_board );
         // Temporary store the original board. We will then manipulate the global othello.board
         // so that we can call those methods on the global othello_board
         // After each iteration we will restore the global othello board from this temp_store_board
         // And then perform the test again to se if we can get the best move
-        // String[][] temp_store_board = this.my_board();
+        String[][] store_othello_board =  copy_me_now( othello_board );
 
-        // 1 get all the valid moves
-        // loop through the entire board if space is valid then process if not next.
-        // Loop through the whole board. Check if move is valid
-        // If it is then count how many pieces it flips. The move with the most piece flips is the move we want.
         int most_flips = 0;
         for ( int row = 0; row < othello_board.length; row++) {
             for (int col = 0; col < othello_board[row].length; col++) {
@@ -53,26 +41,21 @@ public class Computer extends PlayerLogic {
                     turn_total_flips = 0;
                     set_move(row, col);
                     flip_all_pieces();
-                    System.out.println(turn_total_flips);
                     // Get the total flips for current turn.                    
                     if (turn_total_flips > most_flips) {
                         most_flips = turn_total_flips;
                         best_move_row = row;
                         best_move_col = col;
-                        System.out.println("BEST MOVE REACHED ");
-                        // System.out.println(best_move[1]);
-
                     }
-                }
+                }// End outer if
             }
-        }
+        }// End outer forloop
+
         // Restore global othello board
         othello_board = store_othello_board;
         // Set best move values to return them.
         row_col[0] = best_move_row;
         row_col[1] = best_move_col;
-        System.out.println(best_move_row);
-        System.out.println(best_move_col);
         return row_col;
     }// end method
 
@@ -113,7 +96,7 @@ public class Computer extends PlayerLogic {
                 }
             }
         }    
-        // If we looped through whole board and never returned true the there are no valid moves
+        // If we looped through whole board and never returned true then there are no valid moves
         System.out.println("Computer cannot move. You go instead!");
         return true;
      }
