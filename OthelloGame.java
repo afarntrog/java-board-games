@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class OthelloGame {
 
-    static int comp_total_wins = 0;  // Store total wins
+    static int comp_total_wins = 0;  // Store total running total wins
     static int human_total_wins = 0;
     public static void main(String[] args) {
 
@@ -31,6 +31,7 @@ public class OthelloGame {
            game_stats();
     } // End Main
     
+
 
     /**
      * This method gets the move row or column.
@@ -87,8 +88,8 @@ public class OthelloGame {
 
     // Display the total amount of wins per player throughout all games.
     public static void game_stats() {
-        System.out.println("The computer won " + comp_total_wins + " games in total.");
-        System.out.println("Human won " + human_total_wins + " games in total.");
+        System.out.println("The computer won " + comp_total_wins + " game(s) in total.");
+        System.out.println("Human won " + human_total_wins + " game(s) in total.");
     }
 
     /**
