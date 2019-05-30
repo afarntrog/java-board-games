@@ -7,7 +7,6 @@ public class Computer extends PlayerLogic {
         super(piece_color);
     }
 
-
     // BEST MOVE //
     /**
      * This method finds the best possible move and then sets the global move_row and move_col
@@ -68,11 +67,17 @@ public class Computer extends PlayerLogic {
         move_col = row_col[1];
         othello_board[move_row][move_col] = PLAYER_PIECE;
     }
+    
+        // Tell user where the computer will move to.
+    public void display_computer_move() {
+        System.out.println("The computer will go in row " + (move_row + 1) + " and column " + (move_col + 1) + "\n" );
+    }
 
     // Play computers move and flip it's pieces.
     public void play_computer_move( String[][] game_board ) {
         // Set global othello board.
         othello_board = game_board;
+        display_computer_move();
         set_best_move();
         flip_all_pieces();
     }
@@ -99,4 +104,5 @@ public class Computer extends PlayerLogic {
         // If we looped through whole board and never returned true then there are no valid moves
         return true;
      }
+
 }
