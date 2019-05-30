@@ -5,6 +5,7 @@ public class OthelloGame {
     static int comp_total_wins = 0;  // Store total running total wins
     static int human_total_wins = 0;
     public static void main(String[] args) {
+        instructions();
 
         // Play, and then ask user if they want to play again.
         do {
@@ -61,7 +62,6 @@ public class OthelloGame {
      * This will display the winner and scores to the console
      */
     public static void display_winner(Computer comp_player, Human human_player, Board game_board) {
-
         System.out.println( get_winner(comp_player, human_player, game_board) + " won this game!");
         System.out.println("Score tally:");
         System.out.println("Computer total = " + comp_player.score_tally(game_board.get_board()));
@@ -144,4 +144,9 @@ public class OthelloGame {
         game_board.board_printer();
     }
 
+    public static void instructions() {
+        System.out.println("\n\nWelcome to Othello!\n"
+                           + "If you cannot move your turn is skipped.\n"
+                           + "If both players cannot move or the board is full, it is game over.\n");
+    }
 }
