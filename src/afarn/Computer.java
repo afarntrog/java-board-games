@@ -77,8 +77,8 @@ public class Computer extends PlayerLogic {
     public void play_computer_move( String[][] game_board ) {
         // Set global othello board.
         othello_board = game_board;
-        display_computer_move();
         set_best_move();
+        display_computer_move();
         flip_all_pieces();
     }
 

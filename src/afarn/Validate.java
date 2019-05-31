@@ -6,4 +6,4 @@ public class Validate {
     }
 }
 
-// This class is to show me using static methods.
+// This class is to show me using utility classes with static methods.

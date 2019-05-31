@@ -496,4 +496,8 @@ public class PlayerLogic {
         }
         return score;
      }
+
+     public String get_piece() {
+         return PLAYER_PIECE;
+     }
 }
