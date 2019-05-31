@@ -21,6 +21,11 @@ public class Computer extends PlayerLogic {
         int best_move_row = 0;
         int best_move_col = 0;
 
+        // If corner is available then Grab it!
+        if (corner_available()) {
+            return corner_move();
+        }
+
         // Temporary store the original board. We will then manipulate the global othello.board
         // so that we can call those methods on the global othello_board
         // After each iteration we will restore the global othello board from this temp_store_board
@@ -52,11 +57,41 @@ public class Computer extends PlayerLogic {
 
         // Restore global othello board
         othello_board = store_othello_board;
+
         // Set best move values to return them.
         row_col[0] = best_move_row;
         row_col[1] = best_move_col;
         return row_col;
     }// end method
+
+    // Checks to see if a corner is available, if it is return corner move.
+    public int[] corner_move() {
+        int[] row_col = {-1, -1};
+        if ( move_validator(othello_board, 0, 0) ) {
+            row_col[0] = 0;
+            row_col[1] = 0;
+        }
+        else if ( move_validator(othello_board, 0, 7) ) {
+            row_col[0] = 0;
+            row_col[1] = 7;
+        }
+        else if ( move_validator(othello_board, 7, 0) ){
+            row_col[0] = 7;
+            row_col[1] = 0; 
+        }
+        else if ( move_validator(othello_board, 7, 7)  ){
+            row_col[0] = 7;
+            row_col[1] = 7;
+        }
+        return row_col;
+    }
+
+    // If corner_move[0] is a -1 then there is no available corner.
+    // This method tells us if there is an available corner.
+    public boolean corner_available() {
+        return corner_move()[0] != -1;
+    }
+    
 
     // Set computers piece color on move
     private void set_best_move() {
