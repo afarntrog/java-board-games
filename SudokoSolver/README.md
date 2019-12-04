@@ -1,0 +1,2 @@
+#### Sudoku Solver:
+Sudoku Solver can solve any Sudoku board using the [Backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). You can input your own board or use the default. Download the .jar file and give it a try.
